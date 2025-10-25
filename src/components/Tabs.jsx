@@ -1,6 +1,6 @@
 export function Tabs(props) {
   const tabs = ["All", "Open", "Completed"];
-  const { todos } = props;
+  const { todos, selectedTab, setSelectedTab } = props;
 
   return (
     <nav className="tab-container">
@@ -13,13 +13,22 @@ export function Tabs(props) {
             : todos.filter((todo) => todo.complete).length;
         // Numbers for each type of task
         return (
-          <button key={tabIndex} className="tab-button">
+          <button
+            onClick={(e) => {
+              setSelectedTab(tab);
+            }}
+            key={tabIndex}
+            className={
+              "tab-button " + (tab === selectedTab ? " tab-selected" : " ")
+            }
+          >
             <h4>
               {tab} <span>({numOfTasks})</span>
             </h4>
           </button>
         );
       })}
+      <hr />
     </nav>
   );
 }

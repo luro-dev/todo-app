@@ -19,21 +19,44 @@ function App() {
     { input: "Hello! Add your first todo!", complete: true },
   ]);
 
+  const [selectedTab, setSelectedTab] = useState("Open");
+
   // Handler function
   function handleAddTodo(newTodo) {
     const newTodoList = [...todos, { input: newTodo, complete: false }]; // orig dupe
     setTodos(newTodoList);
   }
 
-  function handleEditTodo() {}
+  function handleCompleteTodo(index) {
+    // update / edit / modify
+    const newTodoList = [...todos];
+    let completedTodo = newTodoList[index];
+    completedTodo["complete"] = true;
+    newTodoList[index] = completedTodo;
+    setTodos(newTodoList);
+  }
 
-  function handleDeleteTodo() {}
+  function handleDeleteTodo(index) {
+    let newTodoList = todos.filter((val, valIndex) => {
+      return valIndex !== index;
+    });
+    setTodos(newTodoList);
+  }
 
   return (
     <>
       <Header todos={todos} />
-      <Tabs todos={todos} />
-      <TodoList todos={todos} />
+      <Tabs
+        selectedTab={selectedTab}
+        setSelectedTab={setSelectedTab}
+        todos={todos}
+      />
+      <TodoList
+        todos={todos}
+        handleDeleteTodo={handleDeleteTodo}
+        handleCompleteTodo={handleCompleteTodo}
+        selectedTab={selectedTab}
+      />
       <TodoInput handleAddTodo={handleAddTodo} />
     </>
   );
