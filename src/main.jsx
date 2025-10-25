@@ -9,6 +9,3 @@ createRoot(document.getElementById("root")).render(
     <App />
   </StrictMode>
 );
-
-// Finished adding useState for addNewTodo
-// 1:37:52
