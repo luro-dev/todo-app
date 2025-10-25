@@ -1,3 +1,11 @@
-# Todo App
+# A sleek and responsive Todo List built with React.js, styled using fantaCSS, and powered by localStorage for persistent task management.
 
-## I am creating a todo-app because of the desire to learn how to use React effectively.
+
+
+- Add, delete, and toggle tasks
+
+- Persistent storage using localStorage (your tasks stay saved even after reloads)
+
+- Minimal and modern UI with fantaCSS
+
+- Fast and responsive built with React Hooks (useState, useEffect)
